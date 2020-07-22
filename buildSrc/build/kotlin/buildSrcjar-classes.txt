@@ -1,0 +1,1 @@
+/Users/user/Documents/CardInfoFinder/buildSrc/build/classes/kotlin/main/Deps.class:/Users/user/Documents/CardInfoFinder/buildSrc/build/classes/kotlin/main/Versions.class
