@@ -18,6 +18,15 @@ object Versions {
     val junit = "4.12"
     val junit_ext = "1.1.1"
     val espresso_core = "3.2.0"
+    val coroutines = "1.3.7"
+    val retrofit = "2.9.0"
+    val timber = "4.7.1"
+
+    val lifecycle_version = "2.2.0"
+    val nav_version = "2.3.0"
+    val material_version = "1.3.0-alpha01"
+    val lifecycle_ext = "2.1.1"
+    val room_version = "2.2.5"
 }
 
 object Deps {
@@ -30,4 +39,23 @@ object Deps {
     val junit = "junit:junit:${Versions.junit}"
     val junit_ext = "androidx.test.ext:junit:${Versions.junit_ext}"
     val espresso_core = "androidx.test.espresso:espresso-core:${Versions.espresso_core}"
+    val kotlin_coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+    val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    val retrofit_converter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+    val timber = "com.jakewharton.timber:timber:${Versions.timber}"
+    val viewmodel_ktx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle_version}"
+    val livedata_ktx = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle_version}"
+
+    val navigation_fragment_ktx = "androidx.navigation:navigation-fragment-ktx:${Versions.nav_version}"
+    val navigation_ui_ktx = "androidx.navigation:navigation-ui-ktx:${Versions.nav_version}"
+    val material_design = "com.google.android.material:material:${Versions.material_version}"
+    val lifecycle_extensions = "android.arch.lifecycle:extensions:${Versions.lifecycle_ext}"
+    val room = "androidx.room:room-runtime:${Versions.room_version}"
+    val room_ktx = "androidx.room:room-ktx:${Versions.room_version}"
+    val room_compiler = "androidx.room:room-compiler:${Versions.room_version}"
+    val nav_safe_args = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.nav_version}"
+
+
+
+
 }
