@@ -1,0 +1,12 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation Deps.kotlin_stdlib
+    implementation Deps.koin_android
+    implementation Deps.koin_androidx_scope
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"
