@@ -1,7 +1,9 @@
 package com.mayokunadeniyi.data.repositories
 
-import com.mayokunadeniyi.data.local.CardInfoLocalDataSource
-import com.mayokunadeniyi.data.remote.CardInfoRemoteDataSource
+import com.mayokunadeniyi.data.local.dao.CardInfoDao
+import com.mayokunadeniyi.data.local.entities.CardInfoEntity
+import com.mayokunadeniyi.data.remote.api.CardInfoApiService
+import com.mayokunadeniyi.data.remote.response.getData
 import com.mayokunadeniyi.domain.models.CardInfo
 import com.mayokunadeniyi.domain.repositories.CardInfoRepository
 import com.mayokunadeniyi.domain.utils.Result
@@ -11,19 +13,18 @@ import com.mayokunadeniyi.domain.utils.Result
  */
 
 class CardInfoRepositoryImpl(
-    private val localDataSource: CardInfoLocalDataSource,
-    private val remoteDataSource: CardInfoRemoteDataSource
-): CardInfoRepository{
-    override suspend fun getCardInfo(cardNumber: Double, getFromRemote: Boolean): Result<CardInfo> {
-        return if (getFromRemote){
-            val result = remoteDataSource.getCardInfo(cardNumber)
-            if (result is Result.Success){
-                localDataSource.saveCardInfo(result.data!!)
-            }
-            result
-        }else{
-            Result.Success(localDataSource.getCardInfo())
-        }
+    private val cardInfoApi: CardInfoApiService,
+    private val cardInfoDao: CardInfoDao
+) : BaseRepository<CardInfo, CardInfoEntity>(), CardInfoRepository {
+    override suspend fun getCardInfo(cardNumber: Double): Result<CardInfo> {
+        return fetchData(
+            apiDataProvider = {
+                cardInfoApi.getCardInfo(cardNumber).getData(
+                    fetchFromCacheAction = { cardInfoDao.getCardInfo() },
+                    cacheAction = { cardInfoDao.saveCardInfo(it) }
+                )
+            },
+            dbDataProvider = { cardInfoDao.getCardInfo() }
+        )
     }
-
 }
