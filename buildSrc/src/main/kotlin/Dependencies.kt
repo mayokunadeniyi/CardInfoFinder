@@ -27,6 +27,9 @@ object Versions {
     val material_version = "1.3.0-alpha01"
     val lifecycle_ext = "2.1.1"
     val room_version = "2.2.5"
+    val koin_version = "2.1.5"
+    val retrofit_adapter = "0.9.2"
+    val okhttp_logger = "4.7.2"
 }
 
 object Deps {
@@ -54,6 +57,12 @@ object Deps {
     val room_ktx = "androidx.room:room-ktx:${Versions.room_version}"
     val room_compiler = "androidx.room:room-compiler:${Versions.room_version}"
     val nav_safe_args = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.nav_version}"
+    val koin_android = "org.koin:koin-android:${Versions.koin_version}"
+    val koin_androidx_scope = "org.koin:koin-androidx-scope:${Versions.koin_version}"
+    val koin_viewmodel = "org.koin:koin-androidx-viewmodel:${Versions.koin_version}"
+    val retrofit_coroutine_adapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${Versions.retrofit_adapter}"
+    val okhttp_logger = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp_logger}"
+
 
 
 
