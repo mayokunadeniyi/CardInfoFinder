@@ -27,9 +27,12 @@ object Versions {
     val material_version = "1.3.0-alpha01"
     val lifecycle_ext = "2.1.1"
     val room_version = "2.2.5"
+    val edit_text_anim = "2.0.2"
     val koin_version = "2.1.5"
     val retrofit_adapter = "0.9.2"
     val okhttp_logger = "4.7.2"
+    val legacy_support = "1.0.0"
+    val elastic_view = "2.0.7"
 }
 
 object Deps {
@@ -37,6 +40,7 @@ object Deps {
     val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
     val android_build_tools = "com.android.tools.build:gradle:${Versions.android_build_tools}"
     val androidx_core_ktx = "androidx.core:core-ktx:${Versions.core_ktx}"
+    val androidx_legacy_support = "androidx.legacy:legacy-support-v4:${Versions.legacy_support}"
     val constraint_layout = "androidx.constraintlayout:constraintlayout:${Versions.constraint_layout}"
     val androidx_app_compact = "androidx.appcompat:appcompat:${Versions.androidx_app_compact}"
     val junit = "junit:junit:${Versions.junit}"
@@ -62,6 +66,8 @@ object Deps {
     val koin_viewmodel = "org.koin:koin-androidx-viewmodel:${Versions.koin_version}"
     val retrofit_coroutine_adapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${Versions.retrofit_adapter}"
     val okhttp_logger = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp_logger}"
+    val elastic_view = "com.github.skydoves:elasticviews:${Versions.elastic_view}"
+    val edit_text_anim = "com.alimuzaffar.lib:animated-edit-text:${Versions.edit_text_anim}"
 
 
 
