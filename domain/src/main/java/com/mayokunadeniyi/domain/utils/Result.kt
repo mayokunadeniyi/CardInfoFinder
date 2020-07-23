@@ -1,26 +1,21 @@
 package com.mayokunadeniyi.domain.utils
 
-import java.lang.Exception
 
 /**
  * Created by Mayokun Adeniyi on 22/07/2020.
  */
 
-/**
- * A generic class that holds a value with its loading status.
- * @param <T>
- */
-sealed class Result<out R> {
+sealed class Result<out T : Any>
+data class Success<out T : Any>(val data: T) : Result<T>()
+data class Failure(val httpError: HttpError) : Result<Nothing>()
 
-    data class Success<out T>(val data: T?) : Result<T>()
-    data class Error(val exception: Exception) : Result<Nothing>()
-    object Loading : Result<Nothing>()
+class HttpError(val throwable: Throwable, val errorCode: Int = 0)
 
-    override fun toString(): String {
-        return when (this) {
-            is Success<*> -> "Success[data=$data]"
-            is Error -> "Error[exception=$exception]"
-            is Loading -> "Loading"
-        }
-    }
+inline fun <T : Any> Result<T>.onSuccess(action: (T) -> Unit): Result<T> {
+    if (this is Success) action(data)
+    return this
+}
+
+inline fun <T : Any> Result<T>.onFailure(action: (HttpError) -> Unit) {
+    if (this is Failure) action(httpError)
 }
