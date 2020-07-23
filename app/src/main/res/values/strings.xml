@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CardInfoFinder</string>
+    <string name="welcome_text">Hi &#x1F44B;, please select a method to get your card number</string>
+    <string name="input_card_no">Input card number below &#128071;</string>
+    <string name="card_number">Card Number</string>
+    <string name="search">Search</string>
 </resources>

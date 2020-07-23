@@ -33,6 +33,10 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+
+    buildFeatures{
+        dataBinding = true
+    }
 }
 
 dependencies {
@@ -43,19 +47,19 @@ dependencies {
     implementation Deps.androidx_core_ktx
     implementation Deps.androidx_app_compact
     implementation Deps.constraint_layout
-    implementation Deps.retrofit
-    implementation Deps.retrofit_converter
     implementation Deps.kotlin_coroutines
     implementation Deps.timber
     implementation Deps.viewmodel_ktx
     implementation Deps.livedata_ktx
     implementation Deps.navigation_fragment_ktx
     implementation Deps.navigation_ui_ktx
+    implementation Deps.elastic_view
     implementation Deps.material_design
+    implementation Deps.edit_text_anim
     implementation Deps.lifecycle_extensions
-    implementation Deps.room
-    kapt Deps.room_compiler
-    implementation Deps.room_ktx
+    implementation Deps.koin_androidx_scope
+    implementation Deps.koin_viewmodel
+    implementation Deps.androidx_legacy_support
 
 
     testImplementation Deps.junit
