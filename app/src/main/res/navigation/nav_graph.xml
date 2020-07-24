@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.mayokunadeniyi.cardinfofinder.ui.homefragment.HomeFragment"
-        android:label="HomeFragment"
+        android:label="Home"
         tools:layout="@layout/home_fragment">
         <action
             android:id="@+id/action_homeFragment_to_inputFragment"
@@ -17,10 +17,26 @@
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/fade_out" />
+        <action
+            android:id="@+id/action_homeFragment_to_ocrFragment"
+            app:destination="@id/ocrFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"/>
     </fragment>
     <fragment
         android:id="@+id/inputFragment"
         tools:layout="@layout/input_card_details"
         android:name="com.mayokunadeniyi.cardinfofinder.ui.inputfragment.InputFragment"
-        android:label="InputFragment" />
+        android:label="Input Card" />
+    <fragment
+        android:id="@+id/ocrFragment"
+        tools:layout="@layout/ocr_fragment"
+        android:name="com.mayokunadeniyi.cardinfofinder.ui.ocrfragment.OcrFragment"
+        android:label="Ocr" >
+        <action
+            android:id="@+id/action_ocrFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

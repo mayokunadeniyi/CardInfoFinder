@@ -1,6 +1,7 @@
 package com.mayokunadeniyi.cardinfofinder
 
 import android.app.Application
+import com.google.firebase.FirebaseApp
 import com.mayokunadeniyi.data.di.databaseModule
 import com.mayokunadeniyi.data.di.networkingModule
 import com.mayokunadeniyi.data.di.repositoryModule
@@ -23,7 +24,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
-
+        FirebaseApp.initializeApp(this)
         startKoin { androidContext(this@App)
         if (BuildConfig.DEBUG) androidLogger(Level.DEBUG)
 

@@ -4,4 +4,5 @@
     <string name="input_card_no">Input card number below &#128071;</string>
     <string name="card_number">Card Number</string>
     <string name="search">Search</string>
+    <string name="scan">Scan</string>
 </resources>

@@ -27,7 +27,7 @@ class HomeFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.ocrCard.setOnClickListener {
-
+            findNavController().navigate(R.id.action_homeFragment_to_ocrFragment)
         }
         binding.keyboardCard.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_inputFragment)

@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion Versions.compile_sdk
@@ -34,7 +35,7 @@ android {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
-    buildFeatures{
+    buildFeatures {
         dataBinding = true
     }
 }
@@ -56,12 +57,14 @@ dependencies {
     implementation Deps.elastic_view
     implementation Deps.material_design
     implementation Deps.edit_text_anim
+    implementation Deps.cropper
+    implementation Deps.glide
     implementation Deps.lifecycle_extensions
     implementation Deps.koin_androidx_scope
     implementation Deps.koin_viewmodel
     implementation Deps.androidx_legacy_support
 
-
+    implementation Deps.firebase_ml_vision
     testImplementation Deps.junit
     androidTestImplementation Deps.junit_ext
     androidTestImplementation Deps.espresso_core
