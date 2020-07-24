@@ -12,6 +12,7 @@ import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
@@ -88,6 +89,28 @@ class OcrFragment : Fragment() {
             }
             else -> {
                 requestPermissions(REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
+            }
+        }
+
+        binding.searchButton.setOnClickListener {
+            if (binding.scanResultText.text.isNullOrBlank()){
+                val shake = AnimationUtils.loadAnimation(requireContext(), R.anim.shake)
+                binding.scanResultText.startAnimation(shake)
+            }else{
+                val text = binding.scanResultText.text?.toString()
+                if (text != null){
+                    val trimmedString = text.replace("\\s".toRegex(),"")
+                    try {
+                        val number = trimmedString.toInt()
+                        val action = OcrFragmentDirections.actionOcrFragmentToResultFragment(number)
+                        findNavController().navigate(action)
+                    }catch (exception: Throwable){
+                        val shake = AnimationUtils.loadAnimation(requireContext(), R.anim.shake)
+                        binding.scanResultText.startAnimation(shake)
+                        Snackbar.make(requireView(),"Ensure correct card number format!",Snackbar.LENGTH_SHORT).show()
+                    }
+
+                }
             }
         }
     }

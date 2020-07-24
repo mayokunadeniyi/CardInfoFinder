@@ -71,6 +71,7 @@
             android:background="@drawable/square_box"
             android:ems="10"
             android:visibility="gone"
+            android:maxLength="8"
             android:textColorHint="@color/primaryTextColor"
             android:textSize="24sp"
             android:hint="@string/card_number"

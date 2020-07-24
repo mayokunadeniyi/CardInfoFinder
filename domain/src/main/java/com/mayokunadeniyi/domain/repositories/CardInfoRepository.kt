@@ -8,5 +8,5 @@ import com.mayokunadeniyi.domain.utils.Result
  */
 
 interface CardInfoRepository {
-    suspend fun getCardInfo(cardNumber: Double): Result<CardInfo>
+    suspend fun getCardInfo(cardNumber: Int, getFromRemote: Boolean): Result<CardInfo>
 }

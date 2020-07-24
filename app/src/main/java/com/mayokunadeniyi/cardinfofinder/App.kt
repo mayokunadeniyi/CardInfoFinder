@@ -2,6 +2,7 @@ package com.mayokunadeniyi.cardinfofinder
 
 import android.app.Application
 import com.google.firebase.FirebaseApp
+import com.mayokunadeniyi.cardinfofinder.di.presentationModule
 import com.mayokunadeniyi.data.di.databaseModule
 import com.mayokunadeniyi.data.di.networkingModule
 import com.mayokunadeniyi.data.di.repositoryModule
@@ -25,12 +26,14 @@ class App : Application() {
         super.onCreate()
         instance = this
         FirebaseApp.initializeApp(this)
-        startKoin { androidContext(this@App)
-        if (BuildConfig.DEBUG) androidLogger(Level.DEBUG)
-
+        startKoin {
+            androidContext(this@App)
+            if (BuildConfig.DEBUG) androidLogger(Level.DEBUG)
+            modules(appModules + domainModules + dataModules)
         }
     }
 }
 
+val appModules = listOf(presentationModule)
 val domainModules = listOf(interactionModule)
 val dataModules = listOf(networkingModule, repositoryModule, databaseModule)

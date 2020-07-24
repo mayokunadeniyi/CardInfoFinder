@@ -5,4 +5,5 @@
     <string name="card_number">Card Number</string>
     <string name="search">Search</string>
     <string name="scan">Scan</string>
+    <string name="error_message">It seems the card number is invalid, \n Please go back and retry. Ensure it is between 6-8 digits. \n Preferably type in the card number.</string>
 </resources>

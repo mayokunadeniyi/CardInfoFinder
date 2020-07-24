@@ -8,6 +8,6 @@ import com.mayokunadeniyi.domain.repositories.CardInfoRepository
 
 class GetCardInfoUseCaseImpl(private val repository: CardInfoRepository) : GetCardInfoUseCase {
 
-    override suspend operator fun invoke(param: Double) =
-        repository.getCardInfo(param)
+    override suspend operator fun invoke(param: Int, getFromRemote: Boolean) =
+        repository.getCardInfo(param,getFromRemote)
 }

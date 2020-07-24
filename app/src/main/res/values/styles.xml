@@ -26,4 +26,16 @@
         <item name="android:background">@color/primaryColor</item>
     </style>
 
+    <style name="ResultDisplayStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:elevation">2dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:drawableTint">@color/primaryTextColor</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline5
+        </item>
+        <item name="android:textColor">@color/primaryTextColor</item>
+    </style>
+
 </resources>

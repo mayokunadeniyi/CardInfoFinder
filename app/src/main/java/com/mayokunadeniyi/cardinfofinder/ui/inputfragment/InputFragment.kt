@@ -44,6 +44,13 @@ class InputFragment : Fragment(){
             if (binding.cardNumberEditText.text.isNullOrBlank()){
                 val shake = AnimationUtils.loadAnimation(requireContext(), R.anim.shake)
                 binding.cardNumberEditText.startAnimation(shake)
+            } else{
+                val text = binding.cardNumberEditText.text?.toString()
+                if (text != null){
+                    val cardNumber = text.toInt()
+                    val action = InputFragmentDirections.actionInputFragmentToResultFragment(cardNumber)
+                    findNavController().navigate(action)
+                }
             }
         }
     }
