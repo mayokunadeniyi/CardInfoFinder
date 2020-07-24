@@ -1,6 +1,7 @@
-# CardInfoFinder :mag::credit_card:
 
-![Android Build](https://github.com/mayokunthefirst/CardInfoFinder/workflows/Android%20Build/badge.svg)
+<p align="center"><a><img src="https://github.com/mayokunthefirst/CardInfoFinder/blob/master/media/logo.png" width="200"></a></p>
+
+# CardInfoFinder :mag::credit_card:  ![Android Build](https://github.com/mayokunthefirst/CardInfoFinder/workflows/Android%20Build/badge.svg)
 
 CardInfoFinder is an Android application that accepts input from a user specifically the Issuer Identification Numbers [IIN](https://en.wikipedia.org/wiki/Payment_card_number#Issuer_identification_number_.28IIN.29), 
 previously known as Bank Identification Number (BIN), which is the first 6 or 8 digits of a payment card number (credit cards, debit cards, etc.). 
@@ -54,7 +55,7 @@ Min API level is set to 21, so the presented approach is suitable for over 94.1%
 Clean Architecture is the "core architecture" of this application. The main purpose of this approach is to achieve a separation of concerns which Clean architecture helps with and in
 making the code loosely coupled. This approach results in a more testable and flexible code. This approach divides the project in 3 modules: **presentation, data and domain**.
 
-<p align="center"><a><img src="https://raw.githubusercontent.com/mayokunthefirst/CardInfoFinder/master/media/clean-arch.png" width="700"></a></p>
+<p align="center"><a><img src="https://github.com/mayokunthefirst/CardInfoFinder/blob/master/media/clean-arch.png" width="700"></a></p>
 
 * **Presentation**: Layer with the Android Framework, the MVVM pattern and the DI module. Depends on domain to access the use cases and on DI, to inject dependencies. This is the layer closest 
 to what the user sees on the screen. 
