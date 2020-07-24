@@ -1,7 +1,7 @@
 package com.mayokunadeniyi.data.di
 
 import com.mayokunadeniyi.data.BuildConfig
-import com.mayokunadeniyi.data.common.utils.Constants.BASE_URL
+import com.mayokunadeniyi.data.utils.Constants.BASE_URL
 import com.mayokunadeniyi.data.remote.api.CardInfoApiService
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -17,20 +17,27 @@ import java.util.concurrent.TimeUnit
  */
 
 val networkingModule = module {
-    single { GsonConverterFactory.create() as Converter.Factory }
-    single {HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY) as Interceptor}
-    single {
-        OkHttpClient.Builder().apply {
-            if (BuildConfig.DEBUG) addInterceptor(interceptor = get())
-                .callTimeout(10, TimeUnit.SECONDS)
-        }.build()
-    }
-    single {
+
+    single<CardInfoApiService> {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(get())
-            .addCallAdapterFactory(get())
-            .build()
+            .addConverterFactory(GsonConverterFactory.create())
+            .build().create(CardInfoApiService::class.java)
     }
-    single { get<Retrofit>().create(CardInfoApiService::class.java) }
+
+    single<OkHttpClient> {
+
+        val logger = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
+        val httpClient = OkHttpClient.Builder()
+            .addInterceptor(logger)
+            .connectTimeout(120, TimeUnit.SECONDS)
+            .writeTimeout(120, TimeUnit.SECONDS)
+            .readTimeout(120, TimeUnit.SECONDS)
+            .build()
+
+        httpClient
+    }
 }

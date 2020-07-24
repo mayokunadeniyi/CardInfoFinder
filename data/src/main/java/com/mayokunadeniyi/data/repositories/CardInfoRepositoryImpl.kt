@@ -1,9 +1,10 @@
 package com.mayokunadeniyi.data.repositories
 
 import com.mayokunadeniyi.data.local.dao.CardInfoDao
-import com.mayokunadeniyi.data.local.entities.CardInfoEntity
+import com.mayokunadeniyi.data.mapper.CardInfoMapperLocal
+import com.mayokunadeniyi.data.mapper.CardInfoMapperRemote
 import com.mayokunadeniyi.data.remote.api.CardInfoApiService
-import com.mayokunadeniyi.data.remote.response.getData
+import com.mayokunadeniyi.data.remote.response.toEntity
 import com.mayokunadeniyi.domain.models.CardInfo
 import com.mayokunadeniyi.domain.repositories.CardInfoRepository
 import com.mayokunadeniyi.domain.utils.Result
@@ -15,16 +16,34 @@ import com.mayokunadeniyi.domain.utils.Result
 class CardInfoRepositoryImpl(
     private val cardInfoApi: CardInfoApiService,
     private val cardInfoDao: CardInfoDao
-) : BaseRepository<CardInfo, CardInfoEntity>(), CardInfoRepository {
-    override suspend fun getCardInfo(cardNumber: Double): Result<CardInfo> {
-        return fetchData(
-            apiDataProvider = {
-                cardInfoApi.getCardInfo(cardNumber).getData(
-                    fetchFromCacheAction = { cardInfoDao.getCardInfo() },
-                    cacheAction = { cardInfoDao.saveCardInfo(it) }
-                )
-            },
-            dbDataProvider = { cardInfoDao.getCardInfo() }
-        )
+) : CardInfoRepository {
+
+    override suspend fun getCardInfo(cardNumber: Int, getFromRemote: Boolean): Result<CardInfo> {
+        return when {
+            getFromRemote -> {
+                val cardInfoResult = cardInfoApi.getCardInfo(cardNumber)
+                if (cardInfoResult.isSuccessful) {
+                    val mapperRemote = CardInfoMapperRemote()
+                    val remoteData = cardInfoResult.body()
+                    if (remoteData != null) {
+                        cardInfoDao.saveCardInfo(remoteData.toEntity())
+                        Result.Success(mapperRemote.transform(remoteData))
+                    } else {
+                        Result.Success(null)
+                    }
+                } else {
+                    Result.Error(Exception("Invalid data/failure"))
+                }
+            }
+            else -> {
+                val localData = cardInfoDao.getCardInfo()
+                if (localData == null) {
+                    Result.Success(null)
+                } else {
+                    val mapperLocal = CardInfoMapperLocal()
+                    Result.Success(mapperLocal.transform(localData))
+                }
+            }
+        }
     }
 }

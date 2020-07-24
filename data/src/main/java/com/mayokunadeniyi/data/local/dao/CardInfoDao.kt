@@ -17,7 +17,7 @@ interface CardInfoDao {
     suspend fun saveCardInfo(cardInfo: CardInfoEntity)
 
     @Query("SELECT * FROM card_info_table ORDER BY unique_id DESC LIMIT 1")
-    suspend fun getCardInfo(): CardInfoEntity
+    suspend fun getCardInfo(): CardInfoEntity?
 
     @Query("DELETE FROM card_info_table")
     suspend fun deleteAllCardInfo()

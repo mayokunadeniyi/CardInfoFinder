@@ -12,10 +12,7 @@ data class CardInfoResponse(
     val brand: String? = "",
     val country: Country?,
     val type: String? = ""
-) : RoomMapper<CardInfoEntity> {
-    override fun mapToRoomEntity(): CardInfoEntity =
-        CardInfoEntity(bank = bank, brand = brand, country = country, type = type)
-}
+)
 
 data class Bank(
     val name: String? = ""
@@ -24,3 +21,7 @@ data class Bank(
 data class Country(
     val name: String? = ""
 )
+
+
+fun CardInfoResponse.toEntity() =
+    CardInfoEntity(bank = bank, country = country, type = type, brand = brand)

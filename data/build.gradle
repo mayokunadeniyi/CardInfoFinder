@@ -48,6 +48,7 @@ dependencies {
     implementation Deps.kotlin_coroutines
     implementation Deps.koin_androidx_scope
     implementation Deps.koin_android
+    implementation Deps.koin_viewmodel
     implementation Deps.okhttp_logger
 
     testImplementation Deps.junit

@@ -11,7 +11,7 @@ import retrofit2.http.Path
 
 interface CardInfoApiService {
 
-    @GET("/{cardNumber}")
-    suspend fun getCardInfo(@Path("cardNumber")cardNumber: Double): Response<CardInfoResponse>
+    @GET("{cardNumber}")
+    suspend fun getCardInfo(@Path("cardNumber") cardNumber: Int): Response<CardInfoResponse>
 
 }

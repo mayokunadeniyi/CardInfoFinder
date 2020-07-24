@@ -14,25 +14,26 @@ import java.lang.reflect.Type
 class Converters {
     val gson = Gson()
 
-    val type: Type = object : TypeToken<Bank?>() {}.type
+    val typeBank: Type = object : TypeToken<Bank?>() {}.type
+    val typeCountry: Type = object : TypeToken<Country?>() {}.type
 
     @TypeConverter
     fun fromBank(bank: Bank?): String{
-        return gson.toJson(bank,type)
+        return gson.toJson(bank,typeBank)
     }
 
     @TypeConverter
     fun toBank(json: String?): Bank {
-        return gson.fromJson(json,type)
+        return gson.fromJson(json,typeBank)
     }
 
     @TypeConverter
     fun fromCountry(country: Country?): String{
-        return gson.toJson(country,type)
+        return gson.toJson(country,typeCountry)
     }
 
     @TypeConverter
     fun toCountry(json: String?): Country {
-        return gson.fromJson(json,type)
+        return gson.fromJson(json,typeCountry)
     }
 }
