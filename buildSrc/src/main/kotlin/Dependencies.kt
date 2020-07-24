@@ -33,6 +33,10 @@ object Versions {
     val okhttp_logger = "4.7.2"
     val legacy_support = "1.0.0"
     val elastic_view = "2.0.7"
+    val image_cropper = "2.8.0"
+    val firebase_ml = "24.0.3"
+    val google_services = "4.3.3"
+    val glide_version = "4.11.0"
 }
 
 object Deps {
@@ -68,6 +72,10 @@ object Deps {
     val okhttp_logger = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp_logger}"
     val elastic_view = "com.github.skydoves:elasticviews:${Versions.elastic_view}"
     val edit_text_anim = "com.alimuzaffar.lib:animated-edit-text:${Versions.edit_text_anim}"
+    val firebase_ml_vision = "com.google.firebase:firebase-ml-vision:${Versions.firebase_ml}"
+    val google_services = "com.google.gms:google-services:${Versions.google_services}"
+    val cropper = "com.theartofdev.edmodo:android-image-cropper:${Versions.image_cropper}"
+    val glide = "com.github.bumptech.glide:glide:${Versions.glide_version}"
 
 
 
