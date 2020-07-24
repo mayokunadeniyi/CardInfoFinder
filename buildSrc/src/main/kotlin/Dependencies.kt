@@ -37,6 +37,7 @@ object Versions {
     val firebase_ml = "24.0.3"
     val google_services = "4.3.3"
     val glide_version = "4.11.0"
+    val mockito_version = "2.27.0"
 }
 
 object Deps {
@@ -76,6 +77,8 @@ object Deps {
     val google_services = "com.google.gms:google-services:${Versions.google_services}"
     val cropper = "com.theartofdev.edmodo:android-image-cropper:${Versions.image_cropper}"
     val glide = "com.github.bumptech.glide:glide:${Versions.glide_version}"
+    val mockito = "org.mockito:mockito-core:${Versions.mockito_version}"
+    val coroutine_test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
 
 
 

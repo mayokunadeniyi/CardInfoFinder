@@ -6,6 +6,11 @@ dependencies {
     implementation Deps.kotlin_stdlib
     implementation Deps.koin_android
     implementation Deps.koin_androidx_scope
+
+    testImplementation Deps.mockito
+    testImplementation Deps.junit
+    testImplementation Deps.junit_ext
+    testImplementation Deps.coroutine_test
 }
 
 sourceCompatibility = "1.7"
