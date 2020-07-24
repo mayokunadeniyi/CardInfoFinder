@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.mayokunadeniyi.cardinfofinder.R
 import com.mayokunadeniyi.cardinfofinder.databinding.InputCardDetailsBinding
 
@@ -15,6 +17,17 @@ import com.mayokunadeniyi.cardinfofinder.databinding.InputCardDetailsBinding
 
 class InputFragment : Fragment(){
     private lateinit var binding: InputCardDetailsBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val onBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().navigateUp()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
