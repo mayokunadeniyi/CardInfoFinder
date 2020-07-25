@@ -38,38 +38,48 @@ object Versions {
     val google_services = "4.3.3"
     val glide_version = "4.11.0"
     val mockito_version = "2.27.0"
+    val androidx_core_test = "2.1.0"
+    val fragment_version = "1.3.0-alpha06"
+    val dex_maker_version = "2.12.1"
 }
 
 object Deps {
+
     val kotlin_gradle_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
     val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
     val android_build_tools = "com.android.tools.build:gradle:${Versions.android_build_tools}"
     val androidx_core_ktx = "androidx.core:core-ktx:${Versions.core_ktx}"
     val androidx_legacy_support = "androidx.legacy:legacy-support-v4:${Versions.legacy_support}"
-    val constraint_layout = "androidx.constraintlayout:constraintlayout:${Versions.constraint_layout}"
+    val constraint_layout =
+        "androidx.constraintlayout:constraintlayout:${Versions.constraint_layout}"
     val androidx_app_compact = "androidx.appcompat:appcompat:${Versions.androidx_app_compact}"
     val junit = "junit:junit:${Versions.junit}"
     val junit_ext = "androidx.test.ext:junit:${Versions.junit_ext}"
     val espresso_core = "androidx.test.espresso:espresso-core:${Versions.espresso_core}"
-    val kotlin_coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+    val kotlin_coroutines =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
     val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     val retrofit_converter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
     val timber = "com.jakewharton.timber:timber:${Versions.timber}"
-    val viewmodel_ktx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle_version}"
+    val viewmodel_ktx =
+        "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle_version}"
     val livedata_ktx = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle_version}"
 
-    val navigation_fragment_ktx = "androidx.navigation:navigation-fragment-ktx:${Versions.nav_version}"
+    val navigation_fragment_ktx =
+        "androidx.navigation:navigation-fragment-ktx:${Versions.nav_version}"
     val navigation_ui_ktx = "androidx.navigation:navigation-ui-ktx:${Versions.nav_version}"
     val material_design = "com.google.android.material:material:${Versions.material_version}"
     val lifecycle_extensions = "android.arch.lifecycle:extensions:${Versions.lifecycle_ext}"
     val room = "androidx.room:room-runtime:${Versions.room_version}"
     val room_ktx = "androidx.room:room-ktx:${Versions.room_version}"
     val room_compiler = "androidx.room:room-compiler:${Versions.room_version}"
-    val nav_safe_args = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.nav_version}"
+    val nav_safe_args =
+        "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.nav_version}"
     val koin_android = "org.koin:koin-android:${Versions.koin_version}"
     val koin_androidx_scope = "org.koin:koin-androidx-scope:${Versions.koin_version}"
     val koin_viewmodel = "org.koin:koin-androidx-viewmodel:${Versions.koin_version}"
-    val retrofit_coroutine_adapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${Versions.retrofit_adapter}"
+    val retrofit_coroutine_adapter =
+        "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${Versions.retrofit_adapter}"
     val okhttp_logger = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp_logger}"
     val elastic_view = "com.github.skydoves:elasticviews:${Versions.elastic_view}"
     val edit_text_anim = "com.alimuzaffar.lib:animated-edit-text:${Versions.edit_text_anim}"
@@ -79,9 +89,11 @@ object Deps {
     val glide = "com.github.bumptech.glide:glide:${Versions.glide_version}"
     val mockito = "org.mockito:mockito-core:${Versions.mockito_version}"
     val coroutine_test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
-
-
-
+    val androidx_core_test = "androidx.arch.core:core-testing:${Versions.androidx_core_test}"
+    val fragment_test = "androidx.fragment:fragment-testing:${Versions.fragment_version}"
+    val dex_maker_mockito = "com.linkedin.dexmaker:dexmaker-mockito:${Versions.dex_maker_version}"
+    val espresso_idling = "androidx.test.espresso:espresso-idling-resource:${Versions.espresso_core}"
 
 
 }
+
