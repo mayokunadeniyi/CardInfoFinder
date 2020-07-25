@@ -14,8 +14,8 @@ import com.mayokunadeniyi.data.utils.Constants.CARD_INFO_TABLE_NAME
 @Entity(tableName = CARD_INFO_TABLE_NAME)
 data class CardInfoEntity(
 
+    @PrimaryKey
     @ColumnInfo(name = "unique_id")
-    @PrimaryKey(autoGenerate = true)
     val id: Int? = 0,
     val bank: Bank?,
     val brand: String? = "",

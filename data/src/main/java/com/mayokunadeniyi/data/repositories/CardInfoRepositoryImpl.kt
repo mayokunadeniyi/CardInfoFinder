@@ -1,6 +1,7 @@
 package com.mayokunadeniyi.data.repositories
 
 import com.mayokunadeniyi.data.local.dao.CardInfoDao
+import com.mayokunadeniyi.data.local.entities.CardInfoEntity
 import com.mayokunadeniyi.data.mapper.CardInfoMapperLocal
 import com.mayokunadeniyi.data.mapper.CardInfoMapperRemote
 import com.mayokunadeniyi.data.remote.api.CardInfoApiService
@@ -26,7 +27,15 @@ class CardInfoRepositoryImpl(
                     val mapperRemote = CardInfoMapperRemote()
                     val remoteData = cardInfoResult.body()
                     if (remoteData != null) {
-                        cardInfoDao.saveCardInfo(remoteData.toEntity())
+                        cardInfoDao.saveCardInfo(
+                            CardInfoEntity(
+                                id = cardNumber,
+                                bank = remoteData.bank,
+                                brand = remoteData.brand,
+                                country = remoteData.country,
+                                type = remoteData.type
+                            )
+                        )
                         Result.Success(mapperRemote.transform(remoteData))
                     } else {
                         Result.Success(null)
@@ -36,7 +45,7 @@ class CardInfoRepositoryImpl(
                 }
             }
             else -> {
-                val localData = cardInfoDao.getCardInfo()
+                val localData = cardInfoDao.getCardInfo(cardNumber)
                 if (localData == null) {
                     Result.Success(null)
                 } else {

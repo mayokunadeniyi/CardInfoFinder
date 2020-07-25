@@ -16,8 +16,8 @@ interface CardInfoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveCardInfo(cardInfo: CardInfoEntity)
 
-    @Query("SELECT * FROM card_info_table ORDER BY unique_id DESC LIMIT 1")
-    suspend fun getCardInfo(): CardInfoEntity?
+    @Query("SELECT * FROM card_info_table WHERE unique_id=:id LIMIT 1")
+    suspend fun getCardInfo(id: Int): CardInfoEntity?
 
     @Query("DELETE FROM card_info_table")
     suspend fun deleteAllCardInfo()
