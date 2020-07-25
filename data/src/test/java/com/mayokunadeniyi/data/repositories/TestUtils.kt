@@ -11,6 +11,7 @@ import com.mayokunadeniyi.data.remote.response.Country
 
 const val CARD_NUMBER = 123456
 val fakeCardInfoEntity = CardInfoEntity(
+    id = CARD_NUMBER,
     bank = Bank("adf"),
     type = "Type",
     brand = "Brand",

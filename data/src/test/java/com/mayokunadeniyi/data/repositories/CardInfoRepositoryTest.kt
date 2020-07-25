@@ -1,25 +1,14 @@
 package com.mayokunadeniyi.data.repositories
 
 import com.mayokunadeniyi.data.local.dao.CardInfoDao
-import com.mayokunadeniyi.data.local.entities.CardInfoEntity
 import com.mayokunadeniyi.data.remote.api.CardInfoApiService
-import com.mayokunadeniyi.data.remote.response.Bank
-import com.mayokunadeniyi.data.remote.response.CardInfoResponse
-import com.mayokunadeniyi.data.remote.response.Country
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
-import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
-
-import org.mockito.ArgumentCaptor.*
-import org.junit.Assert.*
-import org.hamcrest.CoreMatchers.*
-import org.mockito.ArgumentMatchers.*
-import org.mockito.Mockito
 import org.mockito.Mockito.*
 import retrofit2.Response
 
@@ -65,12 +54,12 @@ class CardInfoRepositoryTest {
 
     @Test
     fun getCardInfo_fromLocal_returnCachedCardInfo_success() = runBlockingTest {
-        `when`(cardInfoDao.getCardInfo()).thenReturn(fakeCardInfoEntity)
+        `when`(cardInfoDao.getCardInfo(CARD_NUMBER)).thenReturn(fakeCardInfoEntity)
 
         systemUnderTest.getCardInfo(CARD_NUMBER,false)
 
         verifyNoMoreInteractions(cardInfoApiService)
-        verify(cardInfoDao, times(1)).getCardInfo()
+        verify(cardInfoDao, times(1)).getCardInfo(CARD_NUMBER)
     }
 
 

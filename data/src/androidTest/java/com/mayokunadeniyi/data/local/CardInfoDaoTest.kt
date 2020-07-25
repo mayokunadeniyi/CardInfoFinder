@@ -50,6 +50,7 @@ class CardInfoDaoTest {
     @Test
     fun insertCardInfo_getTaskInfo_returnSame() = runBlockingTest {
         val cardInfoEntity = CardInfoEntity(
+            id = CARD_NUMBER,
             bank = Bank(name = "Access"),
             brand = "Brand",
             type = "Type",
@@ -57,7 +58,7 @@ class CardInfoDaoTest {
         )
         database.cardInfoDao.saveCardInfo(cardInfoEntity)
 
-        val returnedCardInfo = database.cardInfoDao.getCardInfo()
+        val returnedCardInfo = database.cardInfoDao.getCardInfo(CARD_NUMBER)
 
         assertThat<CardInfoEntity>(returnedCardInfo as CardInfoEntity,notNullValue())
         assertThat(returnedCardInfo.type, `is`(cardInfoEntity.type))
