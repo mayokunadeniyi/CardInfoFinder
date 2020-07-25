@@ -29,10 +29,10 @@
             app:animationType="fromBottom"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/input_your_num_text" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/input_your_num_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -47,19 +47,19 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.skydoves.elasticviews.ElasticButton
-            android:id="@+id/search_button"
+            android:id="@+id/input_frag_search_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="64dp"
-            app:button_cornerRadius="15dp"
+            android:layout_marginEnd="32dp"
+            android:background="#FFFFFF"
+            android:elevation="12dp"
+            android:text="@string/search"
             android:textSize="17sp"
+            app:button_cornerRadius="15dp"
             app:button_duration="250"
             app:button_scale="0.87"
-            android:layout_marginEnd="32dp"
-            android:elevation="12dp"
-            android:background="#FFFFFF"
-            android:text="@string/search"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/card_number_edit_text" />

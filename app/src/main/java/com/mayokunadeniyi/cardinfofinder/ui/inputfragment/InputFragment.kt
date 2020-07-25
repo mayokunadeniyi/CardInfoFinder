@@ -40,7 +40,7 @@ class InputFragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.searchButton.setOnClickListener {
+        binding.inputFragSearchBtn.setOnClickListener {
             if (binding.cardNumberEditText.text.isNullOrBlank()){
                 val shake = AnimationUtils.loadAnimation(requireContext(), R.anim.shake)
                 binding.cardNumberEditText.startAnimation(shake)
