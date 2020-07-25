@@ -1,7 +1,7 @@
 
 <p align="center"><a><img src="https://github.com/mayokunthefirst/CardInfoFinder/blob/master/media/logo.png" width="200"></a></p>
 
-# CardInfoFinder :mag::credit_card:  ![Android Build](https://github.com/mayokunthefirst/CardInfoFinder/workflows/Android%20Build/badge.svg)
+# CardInfoFinder ![Android Build](https://github.com/mayokunthefirst/CardInfoFinder/workflows/Android%20Build/badge.svg)
 
 CardInfoFinder is an Android application that accepts input from a user specifically the Issuer Identification Numbers [IIN](https://en.wikipedia.org/wiki/Payment_card_number#Issuer_identification_number_.28IIN.29), 
 previously known as Bank Identification Number (BIN), which is the first 6 or 8 digits of a payment card number (credit cards, debit cards, etc.). 
@@ -23,6 +23,9 @@ This project makes use of the following tools and solutions:
 * Material design
 
 ## Tech Stack
+
+<img src="media/app-demo.gif" width="336" align="right" hspace="20">
+
 Min API level is set to 21, so the presented approach is suitable for over 94.1% of devices running Android as at the time of writing this. 
 
 * Tech-stack
