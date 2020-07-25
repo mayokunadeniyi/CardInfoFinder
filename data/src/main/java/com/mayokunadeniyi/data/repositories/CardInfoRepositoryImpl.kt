@@ -5,7 +5,6 @@ import com.mayokunadeniyi.data.local.entities.CardInfoEntity
 import com.mayokunadeniyi.data.mapper.CardInfoMapperLocal
 import com.mayokunadeniyi.data.mapper.CardInfoMapperRemote
 import com.mayokunadeniyi.data.remote.api.CardInfoApiService
-import com.mayokunadeniyi.data.remote.response.toEntity
 import com.mayokunadeniyi.domain.models.CardInfo
 import com.mayokunadeniyi.domain.repositories.CardInfoRepository
 import com.mayokunadeniyi.domain.utils.Result
