@@ -22,6 +22,8 @@ data class Country(
     val name: String? = ""
 )
 
-
+/**
+ * This helps to convert [CardInfoResponse] to [CardInfoEntity]
+ */
 fun CardInfoResponse.toEntity() =
     CardInfoEntity(bank = bank, country = country, type = type, brand = brand)

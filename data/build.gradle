@@ -32,6 +32,11 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+
+    packagingOptions {
+        exclude 'META-INF/AL2.0'
+        exclude 'META-INF/LGPL2.1'
+    }
 }
 
 dependencies {
@@ -52,7 +57,11 @@ dependencies {
     implementation Deps.okhttp_logger
 
     testImplementation Deps.junit
+    testImplementation Deps.mockito
+    testImplementation Deps.coroutine_test
     androidTestImplementation Deps.junit_ext
     androidTestImplementation Deps.espresso_core
+    androidTestImplementation Deps.androidx_core_test
+    androidTestImplementation Deps.coroutine_test
 
 }
