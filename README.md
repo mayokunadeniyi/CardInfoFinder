@@ -26,7 +26,7 @@ This project makes use of the following tools and solutions:
 
 <img src="media/app-demo.gif" width="336" align="right" hspace="20">
 
-Min API level is set to 21, so the presented approach is suitable for over 94.1% of devices running Android as at the time of writing this. 
+Minimum API level is set to 21, so the presented approach is suitable for over 94.1% of devices running Android as at the time of writing this. 
 
 * Tech-stack
     * [Kotlin](https://kotlinlang.org/) + [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - perform background operations
