@@ -3,11 +3,11 @@ package com.mayokunadeniyi.cardinfofinder.ui.ocrfragment
 import android.Manifest
 import android.app.Activity
 import android.content.Intent
-import android.content.pm.PackageManager
+import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
+import android.os.Environment.DIRECTORY_PICTURES
 import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +15,7 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
-import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -27,6 +27,7 @@ import com.google.firebase.ml.vision.text.FirebaseVisionText
 import com.mayokunadeniyi.cardinfofinder.R
 import com.mayokunadeniyi.cardinfofinder.databinding.OcrFragmentBinding
 import com.theartofdev.edmodo.cropper.CropImage
+import com.theartofdev.edmodo.cropper.CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE
 import com.theartofdev.edmodo.cropper.CropImageView
 import timber.log.Timber
 import java.io.File
@@ -42,7 +43,6 @@ class OcrFragment : Fragment() {
 
     private lateinit var binding: OcrFragmentBinding
     private lateinit var currentPhotoPath: String
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,7 +62,6 @@ class OcrFragment : Fragment() {
         binding = OcrFragmentBinding.inflate(layoutInflater)
         return binding.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -93,21 +92,20 @@ class OcrFragment : Fragment() {
         }
 
         binding.searchButton.setOnClickListener {
-            if (binding.scanResultText.text.isNullOrBlank()){
+            if (binding.scanResultText.text.isNullOrBlank()) {
                 val shake = AnimationUtils.loadAnimation(requireContext(), R.anim.shake)
                 binding.scanResultText.startAnimation(shake)
-            }else{
-                val text = binding.scanResultText.text?.toString()
-                if (text != null){
-                    val trimmedString = text.replace("\\s".toRegex(),"")
+            } else {
+                binding.scanResultText.text?.toString()?.let {
+                    val trimmedString = it.replace("\\s".toRegex(), "")
                     try {
                         val number = trimmedString.toInt()
                         val action = OcrFragmentDirections.actionOcrFragmentToResultFragment(number)
                         findNavController().navigate(action)
-                    }catch (exception: Throwable){
+                    } catch (exception: Throwable) {
                         val shake = AnimationUtils.loadAnimation(requireContext(), R.anim.shake)
                         binding.scanResultText.startAnimation(shake)
-                        Snackbar.make(requireView(),"Ensure correct card number format!",Snackbar.LENGTH_SHORT).show()
+                        Snackbar.make(requireView(), "Ensure correct card number format!", Snackbar.LENGTH_SHORT).show()
                     }
 
                 }
@@ -156,7 +154,7 @@ class OcrFragment : Fragment() {
 
     private fun showThatLayout() {
         findNavController().navigate(R.id.action_ocrFragment_to_homeFragment)
-        Snackbar.make(requireView(),"Permissions Denied!",Snackbar.LENGTH_SHORT).show()
+        Snackbar.make(requireView(), "Permissions Denied!", Snackbar.LENGTH_SHORT).show()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -173,7 +171,7 @@ class OcrFragment : Fragment() {
                     findNavController().navigate(R.id.action_ocrFragment_to_homeFragment)
                 }
             }
-            CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE -> {
+            CROP_IMAGE_ACTIVITY_REQUEST_CODE -> {
                 val result = CropImage.getActivityResult(data)
                 if (resultCode == Activity.RESULT_OK) {
                     val resultUri = result.uri
@@ -189,7 +187,6 @@ class OcrFragment : Fragment() {
                 }
             }
         }
-
     }
 
     private fun analyzeImage(resultUri: Uri) {
@@ -219,23 +216,24 @@ class OcrFragment : Fragment() {
     }
 
     private fun processResultText(result: FirebaseVisionText) {
-        if (result.textBlocks.size == 0){
-            Snackbar.make(requireView(),"No Text Found, tap image to retry",Snackbar.LENGTH_LONG).show()
+        if (result.textBlocks.size == 0) {
+            Snackbar.make(requireView(), "No Text Found, tap image to retry", Snackbar.LENGTH_LONG).show()
             return
         }
 
-        for (block in result.textBlocks){
-            binding.scanResultText.visibility = View.VISIBLE
-            binding.searchButton.visibility = View.VISIBLE
-            binding.scanResultText.setText(result.textBlocks[2].text)
+        for (block in result.textBlocks) {
+            with(binding) {
+                scanResultText.visibility = View.VISIBLE
+                searchButton.visibility = View.VISIBLE
+                scanResultText.setText(result.textBlocks[2].text)
+            }
         }
     }
-
 
     private fun createImageFile(): File {
         val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
         val imageFileName = "JPEG_" + timeStamp + "_"
-        val storageDir = this.requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        val storageDir = this.requireContext().getExternalFilesDir(DIRECTORY_PICTURES)
         val image = File.createTempFile(
             imageFileName,
             ".jpg",
@@ -246,7 +244,7 @@ class OcrFragment : Fragment() {
     }
 
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
-        ContextCompat.checkSelfPermission(requireContext(), it) == PackageManager.PERMISSION_GRANTED
+        checkSelfPermission(requireContext(), it) == PERMISSION_GRANTED
     }
 
     private fun shouldShowRequestPermissionRationale() = REQUIRED_PERMISSIONS.all {

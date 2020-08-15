@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.mayokunadeniyi.cardinfofinder.R
@@ -14,8 +13,10 @@ import com.mayokunadeniyi.cardinfofinder.databinding.HomeFragmentBinding
  * Created by Mayokun Adeniyi on 23/07/2020.
  */
 
-class HomeFragment : Fragment(){
-    private lateinit var binding : HomeFragmentBinding
+class HomeFragment : Fragment() {
+
+    private lateinit var binding: HomeFragmentBinding
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -27,11 +28,13 @@ class HomeFragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.ocrCard.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_ocrFragment)
-        }
-        binding.keyboardCard.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_inputFragment)
+        with(findNavController()) {
+            binding.ocrCard.setOnClickListener {
+                navigate(R.id.action_homeFragment_to_ocrFragment)
+            }
+            binding.keyboardCard.setOnClickListener {
+                navigate(R.id.action_homeFragment_to_inputFragment)
+            }
         }
     }
 }
