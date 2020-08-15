@@ -10,12 +10,14 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.mayokunadeniyi.cardinfofinder.R
 import com.mayokunadeniyi.cardinfofinder.databinding.InputCardDetailsBinding
+import com.mayokunadeniyi.cardinfofinder.ui.inputfragment.InputFragmentDirections.Companion.actionInputFragmentToResultFragment
 
 /**
  * Created by Mayokun Adeniyi on 23/07/2020.
  */
 
-class InputFragment : Fragment(){
+class InputFragment : Fragment() {
+
     private lateinit var binding: InputCardDetailsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,20 +37,18 @@ class InputFragment : Fragment(){
     ): View? {
         binding = InputCardDetailsBinding.inflate(layoutInflater)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.inputFragSearchBtn.setOnClickListener {
-            if (binding.cardNumberEditText.text.isNullOrBlank()){
+            if (binding.cardNumberEditText.text.isNullOrBlank()) {
                 val shake = AnimationUtils.loadAnimation(requireContext(), R.anim.shake)
                 binding.cardNumberEditText.startAnimation(shake)
-            } else{
-                val text = binding.cardNumberEditText.text?.toString()
-                if (text != null){
-                    val cardNumber = text.toInt()
-                    val action = InputFragmentDirections.actionInputFragmentToResultFragment(cardNumber)
+            } else {
+                binding.cardNumberEditText.text?.toString()?.let {
+                    val cardNumber = it.toInt()
+                    val action = actionInputFragmentToResultFragment(cardNumber)
                     findNavController().navigate(action)
                 }
             }
